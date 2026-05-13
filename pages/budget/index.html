@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A personal planning hub for gardening, lists, budgeting, and tracking.">
-  <title>Budget · Iris Artifacts</title>
+  <meta name="description" content="A simple private budget tracker for monthly income, planned spending, actual spending, and savings goals.">
+  <title>Budget Tracker · Iris Artifacts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;650;750;850&display=swap" rel="stylesheet">
@@ -22,9 +22,65 @@
 </nav></div></header>
   <main id="main">
 <div class="container breadcrumb"><a href="../../index.html">Home</a> / Budget</div>
-<section class="container page-hero"><span class="kicker">💸 Budget</span><h1>Budget & money tracking</h1><p class="lede">Track monthly targets, actual spending, subscriptions, and savings goals.</p></section>
-<section class="container section"><div class="grid three"><div class="card"><span class="icon">💸</span><h3>Monthly setup</h3><p>Income, fixed bills, flexible categories, and savings transfers.</p></div><div class="card"><span class="icon">💸</span><h3>Spending review</h3><p>What changed, what surprised you, and what to adjust next month.</p></div><div class="card"><span class="icon">💸</span><h3>Goals</h3><p>Emergency fund, garden supplies, travel, gifts, and household projects.</p></div></div></section>
-<section class="container section"><div class="panel"><h2>Quick-start template</h2><p>Use this starter list whenever you create a new budget artifact.</p><div class="list checklist"><label><input type="checkbox"> <span>Monthly setup</span></label><label><input type="checkbox"> <span>Spending review</span></label><label><input type="checkbox"> <span>Goals</span></label></div></div></section>
+<section class="container page-hero budget-hero">
+  <div>
+    <span class="kicker">💸 Budget Tracker</span>
+    <h1>Simple money check-ins.</h1>
+    <p class="lede">Track income, spending categories, bills, and goals right in Iris. Your entries save privately in this browser with local storage.</p>
+  </div>
+  <div class="privacy-note" role="note"><strong>Private by default</strong><span>This static site does not send your numbers anywhere. They stay on the device/browser you type them into.</span></div>
+</section>
+<section class="container section budget-app" aria-label="Interactive budget tracker" data-budget-app>
+  <div class="budget-summary" aria-live="polite">
+    <article class="summary-card"><span>Income</span><strong data-budget-total="income">$0.00</strong></article>
+    <article class="summary-card"><span>Planned</span><strong data-budget-total="planned">$0.00</strong></article>
+    <article class="summary-card"><span>Actual</span><strong data-budget-total="actual">$0.00</strong></article>
+    <article class="summary-card"><span>Left after actual</span><strong data-budget-total="left">$0.00</strong></article>
+  </div>
+  <div class="budget-layout">
+    <form class="panel budget-form" data-budget-form>
+      <h2>Add a budget line</h2>
+      <p>Use income for paychecks or money coming in. Use expense for bills, groceries, garden supplies, and everything going out.</p>
+      <label>Month
+        <input name="month" type="month" required>
+      </label>
+      <label>Type
+        <select name="type" required>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+      </label>
+      <label>Category
+        <input name="category" type="text" placeholder="Groceries, rent, garden, savings..." required>
+      </label>
+      <div class="form-grid">
+        <label>Planned amount
+          <input name="planned" type="number" min="0" step="0.01" placeholder="0.00">
+        </label>
+        <label>Actual amount
+          <input name="actual" type="number" min="0" step="0.01" placeholder="0.00">
+        </label>
+      </div>
+      <label>Note
+        <input name="note" type="text" placeholder="Optional reminder">
+      </label>
+      <div class="actions"><button class="button primary" type="submit">Add line</button><button class="button secondary" type="button" data-budget-reset>Start over</button></div>
+    </form>
+    <section class="panel">
+      <div class="section-head compact"><div><h2>This month</h2><p data-budget-month-label>No entries yet.</p></div></div>
+      <div class="budget-empty" data-budget-empty>Add your first line to see the tracker fill in.</div>
+      <div class="budget-lines" data-budget-lines></div>
+    </section>
+  </div>
+</section>
+<section class="container section">
+  <div class="grid three">
+    <div class="card"><span class="icon">🧾</span><h3>Daily check-in</h3><p>Add anything you spent today while it is fresh.</p></div>
+    <div class="card"><span class="icon">🌱</span><h3>Garden category</h3><p>Track seeds, soil, plants, pots, tools, and little yard projects.</p></div>
+    <div class="card"><span class="icon">🎯</span><h3>Savings goals</h3><p>Add goals as planned expenses or dedicated savings categories.</p></div>
+  </div>
+</section>
+<section class="container section"><div class="panel"><h2>Easy budget rhythm</h2><ul class="list"><li><strong>Morning:</strong>&nbsp;record anything from yesterday and glance at what is left.</li><li><strong>Weekly:</strong>&nbsp;compare planned vs. actual and adjust categories that are drifting.</li><li><strong>Monthly:</strong>&nbsp;duplicate your common bills, update income, and pick one savings focus.</li></ul></div></section>
 </main>
   <footer class="footer"><div class="container footer-inner"><span>© <span data-year></span> Iris Artifacts</span><span>Personal planning, made tidy.</span></div></footer>
   <script src="../../assets/js/app.js" defer></script>

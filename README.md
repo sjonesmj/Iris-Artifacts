@@ -17,3 +17,7 @@ assets/js/app.js           # Mobile menu and tiny helpers
 ## GitHub Pages
 
 This repository is configured to publish from the `main` branch root (`/`).
+
+## Budget tracker
+
+The Budget section includes a small browser-only tracker for monthly income, planned expenses, actual expenses, and savings categories. Entries are stored in the visitor's local browser storage and are not sent to a server.
